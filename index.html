@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', cursive;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.card {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    color: #ff4d6d;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option {
+    background-color: #ffe5ec;
+}
+
+.option:hover {
+    background-color: #ffb3c6;
+}
+
+.nextBtn {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+#yesBtn {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+#noBtn {
+    background-color: gray;
+    color: white;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<!-- PAGE 1 -->
+<div id="page1">
+    <h1>Hi Nehaa 💕</h1>
+    <p>What's my favorite feature about you?</p>
+    <button class="option" onclick="checkAnswer(1, 'A')">A. Eyes</button>
+    <button class="option" onclick="checkAnswer(1, 'B')">B. Forehead</button>
+    <button class="option" onclick="checkAnswer(1, 'C')">C. Smile</button>
+    <button class="option" onclick="checkAnswer(1, 'D')">D. Lips</button>
+    <button class="option" onclick="checkAnswer(1, 'E')">E. All of the above</button>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="hidden">
+    <h1>Memory Check 💭</h1>
+    <p>What movie did we see when we first hung out?</p>
+    <button class="option" onclick="checkAnswer(2, 'A')">A. Spiderman</button>
+    <button class="option" onclick="checkAnswer(2, 'B')">B. Get Out</button>
+    <button class="option" onclick="checkAnswer(2, 'C')">C. Saaiyara</button>
+    <button class="option" onclick="checkAnswer(2, 'D')">D. Final Destination Bloodline</button>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="hidden">
+    <h1>Nickname Time 😌</h1>
+    <p>What was the first nickname I came up with for you?</p>
+    <button class="option" onclick="checkAnswer(3, 'A')">A. Nunu</button>
+    <button class="option" onclick="checkAnswer(3, 'B')">B. Chasmish</button>
+    <button class="option" onclick="checkAnswer(3, 'C')">C. 4 eyes</button>
+    <button class="option" onclick="checkAnswer(3, 'D')">D. Ghanji chudail</button>
+</div>
+
+<!-- FINAL PAGE -->
+<div id="page4" class="hidden">
+    <h1>Nehaa 💘</h1>
+    <p>Will you be my Valentine?</p>
+    <button id="yesBtn" onclick="sayYes()">YES 💖</button>
+    <button id="noBtn">NO 😅</button>
+</div>
+
+<!-- SUCCESS MESSAGE -->
+<div id="success" class="hidden">
+    <h1>FROM ONE TO ANOTHER 💞</h1>
+    <p>You made my day RAURARAWARAWAWAWAW 💕</p>
+    <p>Okay okay… you’re officially stuck with me now 😌</p>
+</div>
+
+</div>
+
+<script>
+
+function checkAnswer(page, answer) {
+    if (page === 1 && answer === 'E') {
+        nextPage(1,2);
+    }
+    else if (page === 2 && answer === 'D') {
+        nextPage(2,3);
+    }
+    else if (page === 3 && answer === 'A') {
+        nextPage(3,4);
+    }
+    else {
+        alert("Hmmmm… try again 😏");
+    }
+}
+
+function nextPage(current, next) {
+    document.getElementById("page"+current).classList.add("hidden");
+    document.getElementById("page"+next).classList.remove("hidden");
+}
+
+function sayYes() {
+    document.getElementById("page4").classList.add("hidden");
+    document.getElementById("success").classList.remove("hidden");
+}
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+</script>
+
+</body>
+</html>
